@@ -1,110 +1,81 @@
 <!DOCTYPE html>
-<html lang="zh-hant">
+<html>
 <head>
-    <title>高中成績計算器</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        h1 {
+            text-align: center;
         }
 
-        .container {
-            width: 600px; /* 增加容器的寬度 */
-            margin: 20px auto;
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center; /* 添加文字居中的屬性 */
+        input {
+            width: 50px;
         }
 
-        .input-group {
+        button {
+            margin: 10px;
+        }
+
+        .center {
             display: flex;
-            align-items: center;
-            margin: 10px;
-        }
-
-        .input-group label {
-            width: 150px; /* 增加標籤的寬度 */
-            font-weight: bold;
-            font-size: 20px; /* 增加字體的大小 */
-        }
-
-        .input-group input {
-            width: 300px; /* 增加輸入框的寬度 */
-            height: 40px; /* 增加輸入框的高度 */
-            border: 1px solid gray;
-            padding: 5px;
-            font-size: 20px; /* 增加字體的大小 */
-        }
-
-        .button {
-            width: 150px; /* 增加按鈕的寬度 */
-            height: 50px; /* 增加按鈕的高度 */
-            background-color: green;
-            color: white;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            font-size: 20px; /* 增加字體的大小 */
-        }
-
-        .result {
-            margin: 10px;
-            font-size: 25px; /* 增加字體的大小 */
-            font-weight: bold;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>高中成績計算器</h1>
+    <h1>高中成績計算器</h1>
+    <div class="center">
         <form id="form">
-            <div class="input-group">
-                <label for="test1">第一次段考</label>
-                <input type="number" id="test1" min="0" max="100" required>
-            </div>
-            <div class="input-group">
-                <label for="test2">第二次段考</label>
-                <input type="number" id="test2" min="0" max="100" required>
-            </div>
-            <div class="input-group">
-                <label for="test3">第三次段考</label>
-                <input type="number" id="test3" min="0" max="100" required>
-            </div>
-            <div class="input-group">
-                <label for="normal">平時成績</label>
-                <input type="number" id="normal" min="0" max="100" required>
-            </div>
-            <div class="input-group">
-                <button type="submit" class="button">計算</button>
-                <input type="reset" class="button" value="重置"> <!-- 添加重置按鈕 -->
+            <p>第一次段考（20%）：<input type="number" id="test1" min="0" max="100" required></p>
+            <p>第二次段考（20%）：<input type="number" id="test2" min="0" max="100" required></p>
+            <p>第三次段考（30%）：<input type="number" id="test3" min="0" max="100" required></p>
+            <p>平時成績（30%）：<input type="number" id="normal" min="0" max="100" required></p>
+            <p>總成績：<span id="total"></span></p>
+            <div class="center">
+                <button type="button" id="reset">重置</button>
+                <button type="button" id="calculate">計算</button>
             </div>
         </form>
-        <div class="result" id="result"></div>
     </div>
     <script>
-        // 獲取表單元素
+        // 獲取元素
         var form = document.getElementById("form");
         var test1 = document.getElementById("test1");
         var test2 = document.getElementById("test2");
         var test3 = document.getElementById("test3");
         var normal = document.getElementById("normal");
-        var result = document.getElementById("result");
+        var total = document.getElementById("total");
+        var reset = document.getElementById("reset");
+        var calculate = document.getElementById("calculate");
 
-        // 為表單添加提交事件監聽器
-        form.addEventListener("submit", function (e) {
-            // 阻止表單的默認行為
-            e.preventDefault();
-            // 獲取輸入的成績
-            var test1Score = parseFloat(test1.value);
-            var test2Score = parseFloat(test2.value);
-            var test3Score = parseFloat(test3.value);
-            var normalScore = parseFloat(normal.value);
-            // 計算總成績，前兩次段考各佔20%，第三次段考和平時成績各佔30%
-            var totalScore = test1Score * 0.2 + test2Score * 0.2 + test3Score * 0.3 + normalScore * 0.3;
-            // 顯示總成績
-            result.textContent = "您的總成績是：" + totalScore.toFixed(2);
-        });
+        // 定義計算函數
+        function calculateTotal() {
+            // 檢查表單是否有效
+            if (form.checkValidity()) {
+                // 計算總成績
+                var result = test1.value * 0.2 + test2.value * 0.2 + test3.value * 0.3 + normal.value * 0.3;
+                // 顯示總成績
+                total.textContent = result.toFixed(2);
+            } else {
+                // 提示輸入錯誤
+                alert("請輸入有效的成績！");
+            }
+        }
+
+        // 定義重置函數
+        function resetForm() {
+            // 清空輸入框
+            test1.value = "";
+            test2.value = "";
+            test3.value = "";
+            normal.value = "";
+            // 清空總成績
+            total.textContent = "";
+        }
+
+        // 綁定計算按鈕的點擊事件
+        calculate.addEventListener("click", calculateTotal);
+
+        // 綁定重置按鈕的點擊事件
+        reset.addEventListener("click", resetForm);
     </script>
 </body>
 </html>
