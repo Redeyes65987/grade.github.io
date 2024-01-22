@@ -17,23 +17,30 @@
         .center {
             display: flex;
             justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            transform: scale(2);
         }
     </style>
 </head>
 <body>
-    <h1>高中成績計算器</h1>
     <div class="center">
-        <form id="form">
-            <p>第一次段考（20%）：<input type="number" id="test1" min="0" max="100" required></p>
-            <p>第二次段考（20%）：<input type="number" id="test2" min="0" max="100" required></p>
-            <p>第三次段考（30%）：<input type="number" id="test3" min="0" max="100" required></p>
-            <p>平時成績（30%）：<input type="number" id="normal" min="0" max="100" required></p>
-            <p>總成績：<span id="total"></span></p>
-            <div class="center">
-                <button type="button" id="reset">重置</button>
-                <button type="button" id="calculate">計算</button>
-            </div>
-        </form>
+        <div class="container">
+            <h1>高中成績計算器</h1>
+            <form id="form">
+                <p>第一次段考（20%）：<input type="number" id="test1" min="0" max="100" required></p>
+                <p>第二次段考（20%）：<input type="number" id="test2" min="0" max="100" required></p>
+                <p>第三次段考（30%）：<input type="number" id="test3" min="0" max="100" required></p>
+                <p>平時成績（30%）：<input type="number" id="normal" min="0" max="100" required></p>
+                <p>總成績：<span id="total"></span></p>
+                <div class="center">
+                    <button type="button" id="reset">重置</button>
+                    <button type="button" id="calculate">計算</button>
+                </div>
+            </form>
+        </div>
     </div>
     <script>
         // 獲取元素
