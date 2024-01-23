@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+	<script src="jquery.hotkeys.js"></script>
+	<script src="key_status.js"></script>
+	<script src="sprite.js"></script>
+	<script src="player.js"></script>
+	<style type="text/css" media="screen">
+		canvas, img { display:block; margin-left: 30px; border:2px solid black; text-align:center;}
+		canvas { background:url(images/bg.png); }
+	</style>
+	<link rel="stylesheet" href="game.css" type="text/css" />
+	<title>Space Shooter</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+	<div id="key">
+		Power Ups:
+		<ul style="text-align:left;">
+			<li>Shield<img src="images/shield.png" style="border:0;margin-right:30px;margin-bottom:0;float: right;"></li>
+		</ul>
+		<ul style="text-align:left;">
+			<li>Multiple Shot<img src="images/laserPowerUp.png" style="border:0;margin-right:30px;margin-top:0;float: right;"></li>
+		</ul>
+	</div>
+	<script src="game.js"></script>
+	<footer id="contentinfo" class="body">
+		<address id="about" class="vcard body">
+			<span class="primary"><br/>
+				<strong><a href="#" class="fn url">Space Shooter</a></strong>
+
+				<span class="role">HTML5 Canvas Game</span>
+			</span>
+
+			<img src="images/player.png" id="shipPic" alt="Ship" class="photo" /><br/>
+			<span class="bio">This Space Shooter game was made using the HTML5 Canvas object and javascript. Use the arrows to move and space to shoot. It also supports
+								tilt controls on iOS devices.</span>
+			<br/>
+			
+		</address>
+	</footer>
+</body>
+</html>
